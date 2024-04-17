@@ -20,35 +20,8 @@ import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlin
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
-import LabelButton from "./LabelButton";
-
 import Logo from "./Logo";
 import Maincard from "./Maincard";
-
-const CustomAppBar = styled(AppBar)(({ theme }) => ({
-  height: "72px",
-  backgroundColor: "white",
-  boxShadow: "outlined",
-  padding: "0px 130px ",
-}));
-
-const Headerbuttons = styled(Button)(({}) => ({
-  color: "black", // Set text color to white
-  backgroundColor: "#fff", // Set background color to white
-  boxShadow: "none",
-  border: "#DCDCDC",
-  borderWidth: "0.5px",
-  borderStyle: "solid",
-  textTransform: "none",
-  fontWeight: 400,
-  fontSize: "16px",
-  "&:hover": {
-    // Adjust hover styles (optional)
-    backgroundColor: "#fff",
-    boxShadow: "0px 0px 2px #DCDCDC",
-    // borderWidth: "1px",
-  },
-}));
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -90,7 +63,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Header() {
+export default function RegisterHeader() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -182,21 +155,14 @@ export default function Header() {
         >
           <AccountCircle />
         </IconButton>
-
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1, display: "block" }}>
-      <CustomAppBar
-        sx={{
-          boxShadow: "1px 1px 1px #EAE7E7 ",
-          height: "72px",
-        }}
-        position="static"
-      >
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
         <Toolbar>
           <IconButton
             edge="start"
@@ -218,40 +184,37 @@ export default function Header() {
             />
           </Search>
 
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
+          <Box sx={{ flexGrow: 1 }} />
           <Stack
             sx={{
               display: { xs: "none", md: "flex" },
               flexDirection: "row",
-              gap: 1,
+              gap: 2,
             }}
           >
-            <Headerbuttons
+            <Button
               variant="contained"
-              startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
+              startIcon={<ShoppingBasketOutlinedIcon />}
             >
+              Basket
+            </Button>
+            <Button variant="contained" startIcon={<OtherHousesOutlinedIcon />}>
               Sign up or log in
-            </Headerbuttons>
+            </Button>
 
-            <Headerbuttons
+            <Button
               variant="contained"
-              startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
+              startIcon={<PermIdentityOutlinedIcon />}
             >
-              Account
-            </Headerbuttons>
+              Profile
+            </Button>
           </Stack>
         </Toolbar>
-      </CustomAppBar>
+      </AppBar>
       {renderMobileMenu}
       {renderMenu}
 
-      {/* <Maincard /> */}
-
-      <Typography sx={{ justifyContent: "center", fontWeight: "bold" }}>
-        Sign up or log in
-      </Typography>
-
-      <LabelButton />
+      <Maincard />
     </Box>
   );
 }
