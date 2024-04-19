@@ -4,19 +4,17 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
+
 import { Button, Stack } from "@mui/material";
-import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
@@ -45,26 +43,43 @@ const Headerbuttons = styled(Button)(({}) => ({
   "&:hover": {
     // Adjust hover styles (optional)
     backgroundColor: "#fff",
-    boxShadow: "0px 0px 2px #DCDCDC",
+    boxShadow: "0px 0px 0px 1px #B6B6B6",
+    border: "black",
+
     // borderWidth: "1px",
   },
 }));
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+const ButtonContainer = styled(Headerbuttons)(({}) => ({
+  display: "flex",
+  justifyContent: "flex-end",
+  paddingLeft: "690px",
+  gap: "6px",
+  border: "none",
+
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
+    border: "none",
+    boxShadow: "none",
+
+    // Adjust hover styles (optional)
   },
 }));
+
+// const Search = styled("div")(({ theme }) => ({
+//   position: "relative",
+//   borderRadius: theme.shape.borderRadius,
+//   backgroundColor: alpha(theme.palette.common.white, 0.15),
+//   "&:hover": {
+//     backgroundColor: alpha(theme.palette.common.white, 0.25),
+//   },
+//   marginRight: theme.spacing(2),
+//   marginLeft: 0,
+//   width: "100%",
+//   [theme.breakpoints.up("sm")]: {
+//     marginLeft: theme.spacing(3),
+//     width: "auto",
+//   },
+// }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -207,7 +222,7 @@ export default function Header() {
             <Logo />
           </IconButton>
 
-          <Search width="300px">
+          {/* <Search width="300px">
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -216,7 +231,7 @@ export default function Header() {
               placeholder="Search Tossed -St Martin's Lane"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search>
+          </Search> */}
 
           {/* <Box sx={{ flexGrow: 1 }} /> */}
           <Stack
@@ -226,19 +241,27 @@ export default function Header() {
               gap: 1,
             }}
           >
-            <Headerbuttons
-              variant="contained"
-              startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
-            >
-              Sign up or log in
-            </Headerbuttons>
+            {/* header buttons  */}
 
-            <Headerbuttons
-              variant="contained"
-              startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
-            >
-              Account
-            </Headerbuttons>
+            <ButtonContainer>
+              <Headerbuttons
+                variant="contained"
+                startIcon={
+                  <OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />
+                }
+              >
+                Sign up or log in
+              </Headerbuttons>
+
+              <Headerbuttons
+                variant="contained"
+                startIcon={
+                  <PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />
+                }
+              >
+                Account
+              </Headerbuttons>
+            </ButtonContainer>
           </Stack>
         </Toolbar>
       </CustomAppBar>
@@ -247,11 +270,15 @@ export default function Header() {
 
       {/* <Maincard /> */}
 
-      <Typography sx={{ justifyContent: "center", fontWeight: "bold" }}>
-        Sign up or log in
-      </Typography>
-
-      <LabelButton />
+      <Stack
+        sx={{
+          justifyContent: "center",
+          width: "400px",
+          alignContent: "center",
+          // alignItems: "center",
+          margin: "0 auto",
+        }}
+      ></Stack>
     </Box>
   );
 }
