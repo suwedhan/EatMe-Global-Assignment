@@ -1,13 +1,34 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button, Stack, Typography, Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import PasswordField from "./PasswordField"; // Import the PasswordField component
+import FormControl from "@mui/material/FormControl";
+import InputLabel from "@mui/material/InputLabel";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputAdornment from "@mui/material/InputAdornment";
+import IconButton from "@mui/material/IconButton";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 export default function Registration() {
   const [email, setEmail] = useState("");
+  const [loginButtonactive, setloginbuttonactive] = useState(true);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
+    // setloginbuttonactive(email === "john@gmail.com"); // Update logindisable based on email
+
+    if (email === "john@gmail.co") {
+      setloginbuttonactive(email === "john@gmail.com");
+    } else setloginbuttonactive(true);
+  };
+
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () =>
+    setShowPassword((prevShow) => !prevShow);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
   };
 
   return (
@@ -33,25 +54,59 @@ export default function Registration() {
               variant="outlined"
               value={email}
               onChange={handleEmailChange}
+              // sx={{
+              //   "&.MuiTextField-root": {
+              //     border: "2px",
+              //     borderColor: "#000",
+              //   },
+              // }}
             />
             {/* Conditionally render PasswordField based on email */}
-            {email === "john@gmail.com" && <PasswordField />}
+            {email === "john@gmail.com" && (
+              <FormControl sx={{ m: 1, width: "400px" }} variant="outlined">
+                <InputLabel htmlFor="outlined-adornment-password">
+                  Password
+                </InputLabel>
+                <OutlinedInput
+                  type={showPassword ? "text" : "password"}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        //   aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  }
+                  placeholder="Password"
+                />
+              </FormControl>
+            )}
+
             <Button
               variant="contained"
               disableRipple
+              disabled={loginButtonactive}
+              onClick={() => console.log("hello")}
               sx={{
                 width: "100%",
                 height: "50px",
-                backgroundColor:
-                  email === "john@gmail.com" ? "#00ccbc" : "#e2e5e5",
+                backgroundColor: "#00ccbc",
                 color: "#fff",
                 fontSize: "medium",
                 fontWeight: "bold",
                 textTransform: "none",
+                // cursor: "not-allowed",
                 boxShadow: "0px 0px 0px white",
+                "&.Mui-disabled": {
+                  // Target disabled state
+                  backgroundColor: "#e2e5e5", // Set disabled color
+                },
                 "&:hover": {
-                  backgroundColor:
-                    email === "john@gmail.com" ? "#00b3aa" : "#e2e5e5",
+                  backgroundColor: "#00b3aa",
                   cursor: "pointer",
                   boxShadow: "none",
                 },
@@ -63,19 +118,22 @@ export default function Registration() {
             <Button
               variant="contained"
               disableRipple
+              disabled={!loginButtonactive}
               sx={{
                 width: "100%",
                 height: "50px",
-                backgroundColor:
-                  email === "john@gmail.com" ? "#00ccbc" : "#e2e5e5",
+                backgroundColor: "#00ccbc",
                 color: "#fff",
                 fontSize: "medium",
                 fontWeight: "bold",
                 textTransform: "none",
                 boxShadow: "0px 0px 0px white",
+                "&.Mui-disabled": {
+                  // Target disabled state
+                  backgroundColor: "#e2e5e5", // Set disabled color
+                },
                 "&:hover": {
-                  backgroundColor:
-                    email === "john@gmail.com" ? "#00b3aa" : "#e2e5e5",
+                  backgroundColor: "#00b3aa",
                   cursor: "pointer",
                   boxShadow: "none",
                 },
