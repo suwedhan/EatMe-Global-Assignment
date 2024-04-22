@@ -1,9 +1,15 @@
+import { useState } from "react";
 import { Button, Stack, Typography, Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
-// import { useState } from "react";
-// import EmailValidator from "@mui/icons-material/Email"; // Import EmailValidator icon
+import PasswordField from "./PasswordField"; // Import the PasswordField component
 
 export default function Registration() {
+  const [email, setEmail] = useState("");
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <>
       <Stack>
@@ -18,16 +24,41 @@ export default function Registration() {
             >
               Sign up or log in
             </Typography>
-
             <Typography variant="h9" textAlign="left">
               Email address
             </Typography>
-
             <TextField
               id="outlined-basic"
-              label="e.g. name@example.com"
+              placeholder="e.g. name@example.com"
               variant="outlined"
+              value={email}
+              onChange={handleEmailChange}
             />
+            {/* Conditionally render PasswordField based on email */}
+            {email === "john@gmail.com" && <PasswordField />}
+            <Button
+              variant="contained"
+              disableRipple
+              sx={{
+                width: "100%",
+                height: "50px",
+                backgroundColor:
+                  email === "john@gmail.com" ? "#00ccbc" : "#e2e5e5",
+                color: "#fff",
+                fontSize: "medium",
+                fontWeight: "bold",
+                textTransform: "none",
+                boxShadow: "0px 0px 0px white",
+                "&:hover": {
+                  backgroundColor:
+                    email === "john@gmail.com" ? "#00b3aa" : "#e2e5e5",
+                  cursor: "pointer",
+                  boxShadow: "none",
+                },
+              }}
+            >
+              Login
+            </Button>
 
             <Button
               variant="contained"
@@ -35,20 +66,22 @@ export default function Registration() {
               sx={{
                 width: "100%",
                 height: "50px",
-                backgroundColor: "#e2e5e5",
-                color: "#ABADAD",
+                backgroundColor:
+                  email === "john@gmail.com" ? "#00ccbc" : "#e2e5e5",
+                color: "#fff",
                 fontSize: "medium",
                 fontWeight: "bold",
                 textTransform: "none",
                 boxShadow: "0px 0px 0px white",
                 "&:hover": {
-                  backgroundColor: "#e2e5e5",
-                  cursor: "not-allowed",
+                  backgroundColor:
+                    email === "john@gmail.com" ? "#00b3aa" : "#e2e5e5",
+                  cursor: "pointer",
                   boxShadow: "none",
                 },
               }}
             >
-              Login
+              Register
             </Button>
 
             <Button

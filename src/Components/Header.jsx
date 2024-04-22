@@ -43,14 +43,14 @@ const Headerbuttons = styled(Button)(({}) => ({
   "&:hover": {
     // Adjust hover styles (optional)
     backgroundColor: "#fff",
-    boxShadow: "0px 0px 0px 1px #B6B6B6",
+    boxShadow: "0px 0px 0px 0.5px #B6B6B6",
     border: "black",
 
     // borderWidth: "1px",
   },
 }));
 
-const ButtonContainer = styled(Headerbuttons)(({}) => ({
+const ButtonContainer = styled("div")(({}) => ({
   display: "flex",
   justifyContent: "flex-end",
   paddingLeft: "690px",
@@ -242,9 +242,9 @@ export default function Header() {
             }}
           >
             {/* header buttons  */}
-
             <ButtonContainer>
               <Headerbuttons
+                disableRipple
                 variant="contained"
                 startIcon={
                   <OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />
@@ -254,6 +254,7 @@ export default function Header() {
               </Headerbuttons>
 
               <Headerbuttons
+                disableRipple
                 variant="contained"
                 startIcon={
                   <PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />

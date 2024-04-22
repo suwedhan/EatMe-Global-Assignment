@@ -1,9 +1,9 @@
-import Downloadplay from "../Assets/Downloadplay.svg";
+import playstore from "../Assets/playstore.svg";
 
 export default function Logo() {
   return (
     <>
-      <img src={Downloadplay} alt="downloadplay" width="135px" />
+      <img src={playstore} alt="downloadplay" width="135px" />
     </>
   );
 }
