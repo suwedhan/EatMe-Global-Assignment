@@ -7,8 +7,10 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import GoogleIcon from "@mui/icons-material/Google";
 import { Typography, Stack, Divider } from "@mui/material";
 import { Link } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export default function LabelButton() {
+  const navigate = useNavigate();
   return (
     <Box sx={{ width: "400px", margin: "0 auto", marginBottom: "60px" }}>
       <Stack direction="column" spacing={2} justifyContent="flex-end">
@@ -93,6 +95,7 @@ export default function LabelButton() {
           variant="contained"
           startIcon={<MailOutlineIcon />}
           disableRipple
+          onClick={() => navigate("/registration")}
           sx={{
             width: "100%",
             height: "50px",

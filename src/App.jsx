@@ -7,6 +7,8 @@ import LabelButton from "./Components/LabelButton";
 import Registration from "./Components/Registration";
 import Login from "./Components/Registration";
 import Register from "./Components/Register";
+import Maincard from "./Components/Maincard";
+import MenuHeader from "./Components/MenuHeader";
 
 //Custom theme to change font globally
 const theme = createTheme({
@@ -23,9 +25,7 @@ function App() {
       {
         <div className="App">
           <Header />
-          {/* <Register />
-          <LabelButton /> */}
-          <Registration />
+          <LabelButton />
           <Footer />
         </div>
       }

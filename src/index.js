@@ -3,13 +3,32 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Registration from "./Components/Registration";
+import { useNavigate } from "react-router-dom";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Register from "./Components/Register";
+import MainCard from "./Components/Maincard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+  },
+
+  {
+    path: "/registration",
+    element: <Registration></Registration>,
+  },
+
+  {
+    path: "/register",
+    element: <Register></Register>,
+  },
+
+  {
+    path: "/menu",
+    element: <MainCard></MainCard>,
   },
 ]);
 

@@ -10,6 +10,8 @@ import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
+import SearchIcon from "@mui/icons-material/Search";
+
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -18,7 +20,10 @@ import { Button, Stack } from "@mui/material";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
+import LabelButton from "./LabelButton";
+
 import Logo from "./Logo";
+import Maincard from "./Maincard";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   height: "72px",
@@ -62,21 +67,21 @@ const ButtonContainer = styled("div")(({}) => ({
   },
 }));
 
-// const Search = styled("div")(({ theme }) => ({
-//   position: "relative",
-//   borderRadius: theme.shape.borderRadius,
-//   backgroundColor: alpha(theme.palette.common.white, 0.15),
-//   "&:hover": {
-//     backgroundColor: alpha(theme.palette.common.white, 0.25),
-//   },
-//   marginRight: theme.spacing(2),
-//   marginLeft: 0,
-//   width: "100%",
-//   [theme.breakpoints.up("sm")]: {
-//     marginLeft: theme.spacing(3),
-//     width: "auto",
-//   },
-// }));
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: "yellow",
+  "&:hover": {
+    backgroundColor: "yellow",
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: "200px",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(3),
+    width: "auto",
+  },
+}));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
   padding: theme.spacing(0, 2),
@@ -91,18 +96,18 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: "inherit",
   "& .MuiInputBase-input": {
-    padding: theme.spacing(1.5, 1.5, 1.5, 0),
+    padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "60ch",
+      width: "20ch",
     },
   },
 }));
 
-export default function Header() {
+export default function MenuHeader() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -164,40 +169,7 @@ export default function Header() {
       }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-    >
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-        >
-          <AccountCircle />
-        </IconButton>
-
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
+    ></Menu>
   );
 
   return (
@@ -218,19 +190,6 @@ export default function Header() {
           >
             <Logo />
           </IconButton>
-
-          {/* <Search width="300px">
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              width="300px"
-              placeholder="Search Tossed -St Martin's Lane"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
-
-          {/* <Box sx={{ flexGrow: 1 }} /> */}
           <Stack
             sx={{
               display: { xs: "none", md: "flex" },
@@ -239,6 +198,17 @@ export default function Header() {
             }}
           >
             {/* header buttons  */}
+
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+
             <ButtonContainer>
               <Headerbuttons
                 disableRipple

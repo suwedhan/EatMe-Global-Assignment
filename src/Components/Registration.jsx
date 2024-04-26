@@ -9,7 +9,13 @@ import IconButton from "@mui/material/IconButton";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
+import { useNavigate } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
+
 export default function Registration() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [loginButtonactive, setloginbuttonactive] = useState(true);
 
@@ -33,6 +39,7 @@ export default function Registration() {
 
   return (
     <>
+      <Header />
       <Stack>
         <Box sx={{ width: "400px", margin: "0 auto", marginBottom: "60px" }}>
           <Stack direction="column" spacing={2} justifyContent="flex-end">
@@ -90,7 +97,7 @@ export default function Registration() {
               variant="contained"
               disableRipple
               disabled={loginButtonactive}
-              onClick={() => console.log("hello")}
+              onClick={() => navigate("/menu")}
               sx={{
                 width: "100%",
                 height: "50px",
@@ -119,6 +126,7 @@ export default function Registration() {
               variant="contained"
               disableRipple
               disabled={!loginButtonactive}
+              onClick={() => navigate("/register")}
               sx={{
                 width: "100%",
                 height: "50px",
@@ -170,6 +178,7 @@ export default function Registration() {
           </Stack>
         </Box>
       </Stack>
+      <Footer />
     </>
   );
 }
