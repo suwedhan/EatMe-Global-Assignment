@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function CustomizedDialogs() {
+export default function Deliverdialog() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -43,9 +43,8 @@ export default function CustomizedDialogs() {
         sx={{
           // ... other styles
           textTransform: "none",
-          border: "1px",
           width: "fit-content",
-
+          border: "1px",
           "&:hover": {
             // Adjust hover styles (optional)
             backgroundColor: "#fff",

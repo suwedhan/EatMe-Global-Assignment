@@ -23,11 +23,11 @@ function App() {
     <ThemeProvider theme={theme}>
       {" "}
       {
-        <div className="App">
+        <>
           <Header />
           <LabelButton />
           <Footer />
-        </div>
+        </>
       }
     </ThemeProvider>
   );

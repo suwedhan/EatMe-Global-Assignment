@@ -34,35 +34,39 @@ export default function CustomizedDialogs() {
 
   return (
     <React.Fragment>
-      <Button
-        variant="text"
-        onClick={handleClickOpen}
-        disableRipple
-        startIcon={<InfoOutlinedIcon />}
-        endIcon={<ArrowForwardIosOutlinedIcon sx={{ color: "#00ccbc" }} />}
-        sx={{
-          // ... other styles
-          textTransform: "none",
-          color: "#585c5c",
-          paddingRight: "210px",
-          border: "1px",
-          minWidth: "fit-content", // Allow button to shrink to content width
-          "&:hover": {
-            // Adjust hover styles (optional)
-            backgroundColor: "#fff",
-          },
+      <Stack>
+        <Button
+          variant="text"
+          onClick={handleClickOpen}
+          disableRipple
+          startIcon={<InfoOutlinedIcon />}
+          endIcon={<ArrowForwardIosOutlinedIcon sx={{ color: "#00ccbc" }} />}
+          sx={{
+            // ... other styles
+            textTransform: "none",
+            backgroundColor: "blue",
+            color: "#585c5c",
+            border: "1px",
+            width: "fit-content",
+            // minWidth: "fit-content", // Allow button to shrink to content width
+            "&:hover": {
+              // Adjust hover styles (optional)
+              backgroundColor: "#fff",
+            },
 
-          "& span": {
-            // Target the content container within the button
-            whiteSpace: "normal", // Allow line breaks based on content width
-          },
-        }}
-      >
-        <Stack textAlign={"left"}>
-          <div> Info</div>
-          <div>Map, allergens and hygiene rating</div>
-        </Stack>
-      </Button>
+            "& span": {
+              // Target the content container within the button
+              whiteSpace: "normal", // Allow line breaks based on content width
+            },
+          }}
+        >
+          <Stack textAlign={"left"}>
+            <div> Info</div>
+            <div>Map, allergens and hygiene rating</div>
+          </Stack>
+        </Button>
+      </Stack>
+
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"

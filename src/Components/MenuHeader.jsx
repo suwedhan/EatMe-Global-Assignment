@@ -24,12 +24,14 @@ import LabelButton from "./LabelButton";
 
 import Logo from "./Logo";
 import Maincard from "./Maincard";
+import { BorderColor } from "@mui/icons-material";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   height: "72px",
   backgroundColor: "white",
   boxShadow: "outlined",
-  padding: "0px 130px ",
+
+  whiteSpace: "nowrap",
 }));
 
 const Headerbuttons = styled(Button)(({}) => ({
@@ -55,7 +57,7 @@ const Headerbuttons = styled(Button)(({}) => ({
 const ButtonContainer = styled("div")(({}) => ({
   display: "flex",
   justifyContent: "flex-end",
-  paddingLeft: "690px",
+  // paddingLeft: "690px",
   gap: "6px",
   border: "none",
 
@@ -72,15 +74,16 @@ const Search = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
   backgroundColor: "yellow",
   "&:hover": {
-    backgroundColor: "yellow",
+    backgroundColor: "#0000000a",
   },
-  marginRight: theme.spacing(2),
+  "&:focus": {
+    border: "1px solid " + theme.palette.primary.main, // Change border to primary color on focus
+    BorderColor: "#000000",
+  },
+  // marginRight: theme.spacing(2),
   marginLeft: 0,
-  width: "200px",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
+  width: "650px",
+  height: "46px",
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
@@ -90,11 +93,14 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   pointerEvents: "none",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "left",
+  width: "100%",
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
+  color: "black",
+  height: "100%",
+
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -102,7 +108,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("md")]: {
-      width: "20ch",
+      width: "65ch",
     },
   },
 }));
@@ -181,7 +187,11 @@ export default function MenuHeader() {
         }}
         position="static"
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            justifyContent: "space-around",
+          }}
+        >
           <IconButton
             edge="start"
             color="inherit"
@@ -190,54 +200,39 @@ export default function MenuHeader() {
           >
             <Logo />
           </IconButton>
-          <Stack
-            sx={{
-              display: { xs: "none", md: "flex" },
-              flexDirection: "row",
-              gap: 1,
-            }}
-          >
-            {/* header buttons  */}
 
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-              />
-            </Search>
+          <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search Tossed - St Martins's Lane"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
 
-            <ButtonContainer>
-              <Headerbuttons
-                disableRipple
-                variant="contained"
-                startIcon={
-                  <OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />
-                }
-              >
-                Sign up or log in
-              </Headerbuttons>
+          <ButtonContainer>
+            <Headerbuttons
+              disableRipple
+              variant="contained"
+              startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
+            >
+              Sign up or log in
+            </Headerbuttons>
 
-              <Headerbuttons
-                disableRipple
-                variant="contained"
-                startIcon={
-                  <PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />
-                }
-              >
-                Account
-              </Headerbuttons>
-            </ButtonContainer>
-          </Stack>
+            <Headerbuttons
+              disableRipple
+              variant="contained"
+              startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
+            >
+              Account
+            </Headerbuttons>
+          </ButtonContainer>
         </Toolbar>
       </CustomAppBar>
       {renderMobileMenu}
       {renderMenu}
-
-      {/* <Maincard /> */}
-
+      ``{" "}
       <Stack
         sx={{
           justifyContent: "center",
