@@ -15,7 +15,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
-import { Grid } from "@mui/material";
+import { Divider, Grid } from "@mui/material";
 import Ratingdialog from "./Ratingdialog";
 import Deliverdialog from "./Deliverdialog";
 
@@ -23,19 +23,11 @@ import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import MenuHeader from "./MenuHeader";
+import Scrollnav from "./Scrollnav";
 import Footer from "./Footer";
 import Header from "./Header";
 import { NoEncryption } from "@mui/icons-material";
 import TextField from "@mui/material/TextField";
-
-// const bull = (
-//   <Box
-//     component="span"
-//     sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-//   >
-//     •
-//   </Box>
-// );
 
 const card = (
   <Stack>
@@ -62,33 +54,41 @@ const card = (
       Back
     </Button>
 
-    <Stack direction="row">
-      <div style={{ marginRight: "20px" }}>
+    <Stack container xs={12} s={12} direction="row">
+      <Stack item xs={12} s={4} sx={{ marginRight: "20px" }}>
         <img
           src={TossedImg}
           alt="img"
           style={{ width: "400px", height: "250px" }}
         />
-      </div>
+      </Stack>
 
-      <CardContent
-        style={{
+      <Stack
+        item
+        xs={12}
+        s={8}
+        sx={{
           display: "flex",
           // alignItems: "center",
           flexDirection: "column",
+          width: "100%",
         }}
       >
         <Stack direction="column">
           <Stack
-            justifyContent="flex-start"
+            justifyContent="space-between"
             textAlign={"left"}
             margin={"10px"}
             direction="row"
           >
             <Stack>
               <Typography
-                component="div"
-                style={{ fontSize: "40px", fontWeight: "bold" }}
+                // component="div"
+                style={{
+                  fontSize: "40px",
+                  fontWeight: "bold",
+                  lineHeight: 1,
+                }}
               >
                 Tossed - St Martin's Lane
               </Typography>
@@ -110,10 +110,7 @@ const card = (
               </Typography>
             </Stack>
 
-            <Stack
-              direction={"column"}
-              sx={{ alignContent: "right", backgroundColor: "yellow" }}
-            >
+            <Stack direction={"column"} sx={{ alignContent: "right" }}>
               <Deliverdialog />
               <Button
                 disableRipple
@@ -142,82 +139,17 @@ const card = (
             </Stack>
           </Stack>
 
-          <Stack sx={{ backgroundColor: "yellow" }}>
+          <Stack>
             <Customdialog />
             <Ratingdialog />
           </Stack>
         </Stack>
-      </CardContent>
+      </Stack>
     </Stack>
 
-    <Stack direction={"row"} sx={{ mb: "2", display: "flex" }}>
-      <Grid container spacing={1} color={"#00ccbc"}>
-        <Grid item>
-          <Button
-            sx={{
-              textTransform: "none",
-              color: "#00ccbc",
-              "&:onhover": { border: "1px", borderRadius: "1px" },
-            }}
-          >
-            Platters
-          </Button>
-        </Grid>
+    <Divider sx={{ my: 0.5 }} />
 
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            New daily Specials
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Create your own
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Salads
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Gym Food
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Hot Power Bowls
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Rainbow Wraps
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Vegan Menu
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>
-            Snacks & Sides
-          </Button>
-        </Grid>
-
-        <Grid item>
-          <Button sx={{ textTransform: "none", color: "#00ccbc" }}>More</Button>
-        </Grid>
-      </Grid>
-    </Stack>
-    {/* <Footer /> */}
+    <Scrollnav />
   </Stack>
 );
 

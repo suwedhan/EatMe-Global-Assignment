@@ -72,7 +72,7 @@ const ButtonContainer = styled("div")(({}) => ({
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: "yellow",
+  backgroundColor: "#0000000a",
   "&:hover": {
     backgroundColor: "#0000000a",
   },
@@ -87,6 +87,7 @@ const Search = styled("div")(({ theme }) => ({
 }));
 
 const SearchIconWrapper = styled("div")(({ theme }) => ({
+  color: "#0000000a",
   padding: theme.spacing(0, 2),
   height: "100%",
   position: "absolute",
@@ -179,7 +180,7 @@ export default function MenuHeader() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, display: "block" }}>
+    <Stack sx={{ flexGrow: 1, display: "block" }}>
       <CustomAppBar
         sx={{
           boxShadow: "1px 1px 1px #EAE7E7 ",
@@ -230,9 +231,8 @@ export default function MenuHeader() {
           </ButtonContainer>
         </Toolbar>
       </CustomAppBar>
-      {renderMobileMenu}
-      {renderMenu}
-      ``{" "}
+      {/* {renderMobileMenu}
+      {renderMenu} */}
       <Stack
         sx={{
           justifyContent: "center",
@@ -242,6 +242,6 @@ export default function MenuHeader() {
           margin: "0 auto",
         }}
       ></Stack>
-    </Box>
+    </Stack>
   );
 }

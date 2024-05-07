@@ -44,7 +44,6 @@ export default function CustomizedDialogs() {
           sx={{
             // ... other styles
             textTransform: "none",
-            backgroundColor: "blue",
             color: "#585c5c",
             border: "1px",
             width: "fit-content",
