@@ -10,6 +10,7 @@ import Register from "./Components/Register";
 import Maincard from "./Components/Maincard";
 import MenuHeader from "./Components/MenuHeader";
 import Scrollnav from "./Components/Scrollnav";
+import Displayitem from "./Components/Displayitem";
 
 //Custom theme to change font globally
 const theme = createTheme({
@@ -25,10 +26,7 @@ function App() {
       {" "}
       {
         <>
-          <Header />
-          <LabelButton />
-
-          <Footer />
+          <Maincard />
         </>
       }
     </ThemeProvider>

@@ -8,6 +8,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Downloadios from "./Downloadios";
 import Downloadplay from "./Downloadplay";
+import { Grid } from "@mui/material";
 
 export default function Footer() {
   const Discover = [
@@ -37,72 +38,120 @@ export default function Footer() {
   const TakeDeliveroowithyou = [<Downloadios />, <Downloadplay />];
 
   return (
-    <Stack
-      direction="column"
+    <Grid
+      item
+      xs={12}
+      alignItems="center"
+      // display={"flex"}
       sx={{
         backgroundColor: "#2e3333",
       }}
-      justifyContent="center"
     >
-      <Stack
-        direction="row"
-        spacing={-2}
+      <Grid
+        container
+        spacing={{ lg: 37, xs: 0 }}
         sx={{
-          justifyItems: "center",
+          width: "100%",
           display: "flex",
-          margin: "0 auto",
-          marginBottom: "4px",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
         }}
       >
-        <Outlinedcard Cardarray={Discover} Title={"Discover Deliveroo"} />
-        <Outlinedcard Cardarray={Legal} Title={"Legal"} />
-        <Outlinedcard Cardarray={Help} Title={"Help"} />
-        <Outlinedcard
-          Cardarray={TakeDeliveroowithyou}
-          Title={"Take Deliveroo with you"}
-          svg={true}
-        />
-      </Stack>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={2}
+          sx={{
+            marginBottom: "4px",
+          }}
+        >
+          <Outlinedcard Cardarray={Discover} Title={"Discover Deliveroo"} />
+        </Grid>
 
-      <Stack
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={2}
+          sx={{
+            marginBottom: "4px",
+          }}
+        >
+          <Outlinedcard Cardarray={Legal} Title={"Legal"} />
+        </Grid>
+
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={2}
+          sx={{
+            marginBottom: "4px",
+          }}
+        >
+          <Outlinedcard Cardarray={Help} Title={"Help"} />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          lg={2}
+          sx={{
+            marginBottom: "4px",
+          }}
+        >
+          <Outlinedcard
+            Cardarray={TakeDeliveroowithyou}
+            Title={"Take Deliveroo with you"}
+            svg={true}
+          />
+        </Grid>
+      </Grid>
+
+      <Grid
+        container
         direction="row"
+        display={"flex"}
         sx={{
           justifyContent: "space-between",
           color: "#fff",
-          marginBottom: "5px",
+          // marginBottom: "5px",
+          // padding: "0 16px", // Add padding to the sides for spacing
+          width: "100%",
         }}
       >
-        <Stack
-          direction="row"
-          spacing={2}
-          marginLeft={"150px"}
-          sx={{ flexGrow: 1, marginBottom: "20px" }}
-        >
-          {/* Parent Stack with flex-grow */}
+        <Stack direction={"row"} spacing={2} sx={{ paddingLeft: "18px" }}>
           {/* Icon Stack */}
           <FacebookRoundedIcon
-            sx={{ fontSize: "24px", "&:hover": { color: "#1877F2	" } }}
+            sx={{ fontSize: "24px", "&:hover": { color: "#1877F2" } }}
           />
           <TwitterIcon
-            sx={{ fontSize: "24px", "&:hover": { color: "#1DA1F2	" } }}
+            sx={{ fontSize: "24px", "&:hover": { color: "#1DA1F2" } }}
           />
           <InstagramIcon
-            sx={{ fontSize: "24px", "&:hover": { color: "#ee2a7b	" } }}
+            sx={{ fontSize: "24px", "&:hover": { color: "#ee2a7b" } }}
           />
-
-          <Stack>
-            <Typography
-              sx={{
-                fontSize: "14px",
-                color: "#585c5c",
-                marginLeft: "910px",
-              }}
-            >
-              © 2024 Deliveroo
-            </Typography>
-          </Stack>
         </Stack>
-      </Stack>
-    </Stack>
+
+        <Stack
+          sx={{
+            justifyContent: "flex-end",
+            display: "flex",
+            paddingRight: 2,
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: "14px",
+              color: "#585c5c",
+            }}
+          >
+            © 2024 Deliveroo
+          </Typography>
+        </Stack>
+      </Grid>
+    </Grid>
   );
 }

@@ -83,7 +83,11 @@ export default function Scrollnav() {
         <Stack direction="row" gap={3} sx={{}}>
           {menuitems.map((menuItem, index) => (
             <Button
-              sx={{ textTransform: "none", color: "#00ccbc" }}
+              sx={{
+                textTransform: "none",
+                color: "#00ccbc",
+                borderRadius: "16px",
+              }}
               key={index}
             >
               {menuItem}{" "}

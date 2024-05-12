@@ -55,7 +55,6 @@ const OutlinedCard = ({ Cardarray, Title, svg }) => {
         sx={{
           backgroundColor: "hsla(0,0%,100%,.1)",
           height: "400px",
-          width: "231",
         }}
       >
         <CardComponent Cardarray={Cardarray} Title={Title} svg={svg} />
