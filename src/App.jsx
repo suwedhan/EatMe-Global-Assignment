@@ -7,10 +7,12 @@ import LabelButton from "./Components/LabelButton";
 import Registration from "./Components/Registration";
 import Login from "./Components/Registration";
 import Register from "./Components/Register";
-import Maincard from "./Components/Maincard";
+
 import MenuHeader from "./Components/MenuHeader";
 import Scrollnav from "./Components/Scrollnav";
 import Displayitem from "./Components/Displayitem";
+import { Card } from "@mui/material";
+import Maincard from "./Components/Maincard";
 
 //Custom theme to change font globally
 const theme = createTheme({
