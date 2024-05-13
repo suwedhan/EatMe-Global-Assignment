@@ -28,7 +28,8 @@ function App() {
       {" "}
       {
         <>
-          <Maincard />
+          {/* <Maincard /> */}
+          <Footer />
         </>
       }
     </ThemeProvider>

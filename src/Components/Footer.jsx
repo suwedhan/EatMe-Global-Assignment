@@ -39,17 +39,20 @@ export default function Footer() {
 
   return (
     <Grid
-      item
-      xs={12}
+      // item
+      // xs={12}
       alignItems="center"
       // display={"flex"}
       sx={{
         backgroundColor: "#2e3333",
+        paddingBlock: "20px",
+        paddingInline: "16px",
       }}
     >
       <Grid
         container
-        spacing={{ lg: 37, xs: 0 }}
+        spacing={34}
+        // spacing={{ lg: 37, xs: 0 }}
         sx={{
           width: "100%",
           display: "flex",
