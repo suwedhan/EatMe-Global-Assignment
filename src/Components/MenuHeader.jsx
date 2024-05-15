@@ -1,30 +1,24 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
+import WindowResize from "./CustomHooks/WindowResize";
+
 import IconButton from "@mui/material/IconButton";
+
 // import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 
 import SearchIcon from "@mui/icons-material/Search";
 
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MailIcon from "@mui/icons-material/Mail";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-
-import { Button, Stack } from "@mui/material";
-import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
+import { Button, Grid, Stack } from "@mui/material";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-
-import LabelButton from "./LabelButton";
+import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 
 import Logo from "./Logo";
-import Maincard from "./Maincard";
-import { BorderColor } from "@mui/icons-material";
+import MediaQuery from "react-responsive";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   height: "72px",
@@ -78,7 +72,7 @@ const Search = styled("div")(({ theme }) => ({
   },
   "&:focus": {
     border: "1px solid " + theme.palette.primary.main, // Change border to primary color on focus
-    BorderColor: "#000000",
+    BorderColor: "black",
   },
   // marginRight: theme.spacing(2),
   marginLeft: 0,
@@ -114,9 +108,19 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+// stlying for responsiveness
+
+// const hiddenTheme = styled("")(({ theme }) => ({
+//   [theme.breakpoints.up("sm")]: {
+//     backgroundColor: "black",
+//   },
+// }));
+
 export default function MenuHeader() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  // hook for conditional rendering of the Signup button
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -179,8 +183,10 @@ export default function MenuHeader() {
     ></Menu>
   );
 
+  const { width, height } = WindowResize();
+
   return (
-    <Stack sx={{ flexGrow: 1, display: "block" }}>
+    <Grid container>
       <CustomAppBar
         sx={{
           boxShadow: "1px 1px 1px #EAE7E7 ",
@@ -212,23 +218,22 @@ export default function MenuHeader() {
             />
           </Search>
 
-          <ButtonContainer>
-            <Headerbuttons
-              disableRipple
-              variant="contained"
-              startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
-            >
-              Sign up or log in
-            </Headerbuttons>
+          <Headerbuttons
+            hidden
+            disableRipple
+            variant="contained"
+            startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
+          >
+            Sign up or log in
+          </Headerbuttons>
 
-            <Headerbuttons
-              disableRipple
-              variant="contained"
-              startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
-            >
-              Account
-            </Headerbuttons>
-          </ButtonContainer>
+          <Headerbuttons
+            disableRipple
+            variant="contained"
+            startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
+          >
+            Account
+          </Headerbuttons>
         </Toolbar>
       </CustomAppBar>
       {/* {renderMobileMenu}
@@ -242,6 +247,6 @@ export default function MenuHeader() {
           margin: "0 auto",
         }}
       ></Stack>
-    </Stack>
+    </Grid>
   );
 }

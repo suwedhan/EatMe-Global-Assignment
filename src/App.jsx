@@ -9,6 +9,7 @@ import Login from "./Components/Registration";
 import Register from "./Components/Register";
 
 import MenuHeader from "./Components/MenuHeader";
+import WindowResize from "./Components/CustomHooks/WindowResize";
 import Scrollnav from "./Components/Scrollnav";
 import Displayitem from "./Components/Displayitem";
 import { Card } from "@mui/material";
@@ -23,13 +24,16 @@ const theme = createTheme({
 });
 
 function App() {
+  const { width, height } = WindowResize();
+  console.log(width, height);
   return (
     <ThemeProvider theme={theme}>
       {" "}
       {
         <>
-          {/* <Maincard /> */}
-          <Footer />
+          <MenuHeader />
+          {/* <Maincard />
+          <Footer /> */}
         </>
       }
     </ThemeProvider>

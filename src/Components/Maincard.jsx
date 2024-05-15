@@ -78,7 +78,6 @@ export default function MainCard() {
             // direction="row"
             rowSpacing={2}
             sx={{
-              bgcolor: "yellow",
               display: "flex",
               flexDirection: "row",
               // justifyContent: "space-between",
@@ -114,7 +113,6 @@ export default function MainCard() {
                 // alignItems: "center",
                 flexDirection: "column",
                 // width: "100%",
-                bgcolor: "blueviolet",
               }}
             >
               <Grid item>
@@ -208,7 +206,6 @@ export default function MainCard() {
               // direction={"column"}
               sx={{
                 alignContent: "right",
-                bgcolor: "blue",
                 direction: "flex",
                 flexDirection: "column",
               }}
