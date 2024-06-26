@@ -10,8 +10,12 @@ import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
-import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
-import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+
+import AddIcon from "@mui/icons-material/Add";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -22,7 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function Deliverdialog() {
+export default function Displayitem() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -34,40 +38,45 @@ export default function Deliverdialog() {
 
   return (
     <React.Fragment>
-      <Button
-        onClick={handleClickOpen}
-        disableRipple
-        startIcon={<DirectionsBikeIcon sx={{ color: "#4d7c1b" }} />}
-        sx={{
-          // ... other styles
-          textTransform: "none",
-          width: "fit-content",
-          border: "1px",
-
-          "&:hover": {
-            // Adjust hover styles (optional)
-            backgroundColor: "#fff",
-          },
-
-          "& span": {
-            // Target the content container within the button
-            whiteSpace: "normal", // Allow line breaks based on content width
-          },
-        }}
-      >
-        <Stack textAlign={"left"}>
-          <Stack textAlign={"left"}>
-            <Typography sx={{ color: "black" }}>
-              Deliver in 20 - 35 min
+      <Stack>
+        <Card sx={{ maxWidth: 180, borderRadius: "4px" }}>
+          <CardMedia
+            component="img"
+            alt="food bowl"
+            height="140"
+            image="./Assets/foodBowl.jpeg"
+          />
+          <CardContent>
+            <Typography gutterBottom fontWeight="bold" component="div">
+              Avocado Caesar Salad
             </Typography>
-            <Stack direction={"row"} gap={1}>
-              <Typography sx={{ color: "#00ccbc", fontSize: "bold" }}>
-                Change
-              </Typography>
-            </Stack>
-          </Stack>
-        </Stack>
-      </Button>
+            <Typography variant="body2" color="text.secondary">
+              432 kcal
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              €12.49
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button
+              disableRipple
+              size="small"
+              sx={{
+                border: "1px solid #0000000a",
+                backgroundColor: "#fff",
+                color: "#2e3333",
+
+                "&:hover": {
+                  // Adjust hover styles (optional)
+                  backgroundColor: "#fff",
+                },
+              }}
+            >
+              <AddIcon sx={{ color: "#0000000a" }} />
+            </Button>
+          </CardActions>
+        </Card>
+      </Stack>
 
       <BootstrapDialog
         onClose={handleClose}

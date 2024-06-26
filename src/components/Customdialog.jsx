@@ -10,8 +10,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 
-import StarOutlinedIcon from "@mui/icons-material/StarOutlined";
-import DirectionsBikeIcon from "@mui/icons-material/DirectionsBike";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -22,7 +22,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export default function Deliverdialog() {
+export default function CustomizedDialogs() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -34,40 +34,37 @@ export default function Deliverdialog() {
 
   return (
     <React.Fragment>
-      <Button
-        onClick={handleClickOpen}
-        disableRipple
-        startIcon={<DirectionsBikeIcon sx={{ color: "#4d7c1b" }} />}
-        sx={{
-          // ... other styles
-          textTransform: "none",
-          width: "fit-content",
-          border: "1px",
+      <Stack>
+        <Button
+          variant="text"
+          onClick={handleClickOpen}
+          disableRipple
+          startIcon={<InfoOutlinedIcon />}
+          endIcon={<ArrowForwardIosOutlinedIcon sx={{ color: "#00ccbc" }} />}
+          sx={{
+            // ... other styles
+            textTransform: "none",
+            color: "#585c5c",
+            border: "1px",
+            width: "fit-content",
+            // minWidth: "fit-content", // Allow button to shrink to content width
+            "&:hover": {
+              // Adjust hover styles (optional)
+              backgroundColor: "#fff",
+            },
 
-          "&:hover": {
-            // Adjust hover styles (optional)
-            backgroundColor: "#fff",
-          },
-
-          "& span": {
-            // Target the content container within the button
-            whiteSpace: "normal", // Allow line breaks based on content width
-          },
-        }}
-      >
-        <Stack textAlign={"left"}>
+            "& span": {
+              // Target the content container within the button
+              whiteSpace: "normal", // Allow line breaks based on content width
+            },
+          }}
+        >
           <Stack textAlign={"left"}>
-            <Typography sx={{ color: "black" }}>
-              Deliver in 20 - 35 min
-            </Typography>
-            <Stack direction={"row"} gap={1}>
-              <Typography sx={{ color: "#00ccbc", fontSize: "bold" }}>
-                Change
-              </Typography>
-            </Stack>
+            <div> Info</div>
+            <div>Map, allergens and hygiene rating</div>
           </Stack>
-        </Stack>
-      </Button>
+        </Button>
+      </Stack>
 
       <BootstrapDialog
         onClose={handleClose}

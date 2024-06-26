@@ -1,29 +1,25 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import WindowResize from "./CustomHooks/WindowResize";
+import WindowResize from "../../hooks/WindowResize";
 
 import IconButton from "@mui/material/IconButton";
-
-// import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
 
 import SearchIcon from "@mui/icons-material/Search";
 
-import { Button, Grid, Stack } from "@mui/material";
+import { Button, Container, Stack } from "@mui/material";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 
-import Logo from "./Logo";
-import MediaQuery from "react-responsive";
+import Logo from "../Logo";
+import Searchicon from "../Searchicon";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   height: "72px",
   backgroundColor: "white",
-  boxShadow: "outlined",
+  // boxShadow: "outlined",
 
   whiteSpace: "nowrap",
 }));
@@ -37,6 +33,7 @@ const Headerbuttons = styled(Button)(({}) => ({
   borderStyle: "solid",
   textTransform: "none",
   fontWeight: 400,
+  margin: 0,
   fontSize: "16px",
   "&:hover": {
     // Adjust hover styles (optional)
@@ -45,21 +42,6 @@ const Headerbuttons = styled(Button)(({}) => ({
     border: "black",
 
     // borderWidth: "1px",
-  },
-}));
-
-const ButtonContainer = styled("div")(({}) => ({
-  display: "flex",
-  justifyContent: "flex-end",
-  // paddingLeft: "690px",
-  gap: "6px",
-  border: "none",
-
-  "&:hover": {
-    border: "none",
-    boxShadow: "none",
-
-    // Adjust hover styles (optional)
   },
 }));
 
@@ -74,7 +56,7 @@ const Search = styled("div")(({ theme }) => ({
     border: "1px solid " + theme.palette.primary.main, // Change border to primary color on focus
     BorderColor: "black",
   },
-  // marginRight: theme.spacing(2),
+  marginRight: theme.spacing(2),
   marginLeft: 0,
   width: "650px",
   height: "46px",
@@ -108,89 +90,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-// stlying for responsiveness
-
-// const hiddenTheme = styled("")(({ theme }) => ({
-//   [theme.breakpoints.up("sm")]: {
-//     backgroundColor: "black",
-//   },
-// }));
-
 export default function MenuHeader() {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
-  // hook for conditional rendering of the Signup button
-
-  const isMenuOpen = Boolean(anchorEl);
-  const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleMobileMenuClose = () => {
-    setMobileMoreAnchorEl(null);
-  };
-
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
-
-  const mobileMenuId = "primary-search-account-menu-mobile";
-  const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
-    ></Menu>
-  );
-
-  const { width, height } = WindowResize();
+  const { width } = WindowResize();
+  console.log(width < 450);
 
   return (
-    <Grid container>
+    <Container maxWidth="fixed">
       <CustomAppBar
         sx={{
-          boxShadow: "1px 1px 1px #EAE7E7 ",
+          boxShadow: "0px 1px 1px #EAE7E7 ",
           height: "72px",
+          marginRight: 0,
         }}
         position="static"
       >
@@ -208,7 +118,14 @@ export default function MenuHeader() {
             <Logo />
           </IconButton>
 
-          <Search>
+          {/* //condtional rendering of the search icon button */}
+          {width < 768 ? <Searchicon /> : ""}
+
+          <Search
+            sx={{
+              display: width < 768 ? "none" : "inherit",
+            }}
+          >
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -217,23 +134,27 @@ export default function MenuHeader() {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+          {/* <Searchicon /> */}
+          <Stack direction="row" gap={1}>
+            <Headerbuttons
+              sx={{
+                display: width < 570 ? "none" : "inherit",
+              }}
+              disableRipple
+              variant="contained"
+              startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
+            >
+              Sign up or log in
+            </Headerbuttons>
 
-          <Headerbuttons
-            hidden
-            disableRipple
-            variant="contained"
-            startIcon={<OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />}
-          >
-            Sign up or log in
-          </Headerbuttons>
-
-          <Headerbuttons
-            disableRipple
-            variant="contained"
-            startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
-          >
-            Account
-          </Headerbuttons>
+            <Headerbuttons
+              disableRipple
+              variant="contained"
+              startIcon={<PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />}
+            >
+              Account
+            </Headerbuttons>
+          </Stack>
         </Toolbar>
       </CustomAppBar>
       {/* {renderMobileMenu}
@@ -247,6 +168,6 @@ export default function MenuHeader() {
           margin: "0 auto",
         }}
       ></Stack>
-    </Grid>
+    </Container>
   );
 }
