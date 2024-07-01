@@ -1,12 +1,10 @@
 import React from "react";
-import { CardContent, Typography, Grid, Stack, Container } from "@mui/material";
-
+import { CardContent, Typography, Grid, Stack, Box } from "@mui/material";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import Downloadios from "../Downloadios";
-import Downloadplay from "../Downloadplay";
-import WindowResize from "../../hooks/WindowResize";
+import Downloadios from "./Downloadios";
+import Downloadplay from "./Downloadplay";
 
 const Discover = [
   "Investors",
@@ -43,9 +41,9 @@ const OutlinedCard = ({ cardArray, title }) => {
         backgroundColor: "hsla(0,0%,100%,.1)",
         padding: "24px",
         flexGrow: 1,
-        display: { md: "auto" },
+        display: "flex",
         flexDirection: "column",
-        minHeight: { xs: "auto", md: 380 },
+        boxSizing: "border-box",
       }}
     >
       <Typography
@@ -76,33 +74,62 @@ const OutlinedCard = ({ cardArray, title }) => {
 };
 
 const Footer = () => (
-  <Stack
+  <Box
     sx={{
       width: "100%",
       backgroundColor: "#2e3333",
-      padding: "1vh",
-      paddingBottom: "30px",
+      px: { xs: 2, sm: 5, md: 10 },
+      py: 4,
+      boxSizing: "border-box",
     }}
   >
-    <Grid
-      container
-      spacing={2}
-      sx={{
-        px: { xs: 0, sm: 5, md: 10, lg: 20 },
-        width: "100%",
-        backgroundColor: "#2e3333",
-      }}
-    >
-      <Grid sx={{ height: "fitContent" }} item xs={12} sm={6} md={3} lg={3}>
+    <Grid container spacing={2} alignItems="stretch">
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={3}
+        display="flex"
+        sx={{
+          width: { xs: "100%", md: "75%" }, // Full width on small screens, reduced width on desktop
+        }}
+      >
         <OutlinedCard cardArray={Discover} title={"Discover"} />
       </Grid>
-      <Grid sx={{ height: "fitContent" }} item xs={12} sm={6} md={3} lg={3}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={3}
+        display="flex"
+        sx={{
+          width: { xs: "100%", md: "75%" }, // Full width on small screens, reduced width on desktop
+        }}
+      >
         <OutlinedCard cardArray={Legal} title={"Legal"} />
       </Grid>
-      <Grid sx={{ height: "fitContent" }} item xs={12} sm={6} md={3} lg={3}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={3}
+        display="flex"
+        sx={{
+          width: { xs: "100%", md: "75%" }, // Full width on small screens, reduced width on desktop
+        }}
+      >
         <OutlinedCard cardArray={Help} title={"Help"} />
       </Grid>
-      <Grid sx={{ height: "fitContent" }} item xs={12} sm={6} md={3} lg={3}>
+      <Grid
+        item
+        xs={12}
+        sm={6}
+        md={3}
+        display="flex"
+        sx={{
+          width: { xs: "100%", md: "75%" }, // Full width on small screens, reduced width on desktop
+        }}
+      >
         <OutlinedCard
           cardArray={TakeDeliveroowithyou}
           title={"Take Deliveroo with you"}
@@ -111,9 +138,15 @@ const Footer = () => (
       <Grid
         item
         xs={12}
-        sx={{ display: "flex", justifyContent: "space-between" }}
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          mt: 2,
+          flexWrap: "wrap", // Ensure that the content wraps on small screens
+        }}
       >
-        <Stack direction={"row"} spacing={2}>
+        <Stack direction="row" spacing={2}>
           {/* Icon Stack */}
           <FacebookRoundedIcon
             sx={{
@@ -142,7 +175,7 @@ const Footer = () => (
         </Typography>
       </Grid>
     </Grid>
-  </Stack>
+  </Box>
 );
 
 export default Footer;

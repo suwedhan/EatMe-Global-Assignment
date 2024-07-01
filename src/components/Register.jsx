@@ -4,12 +4,11 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import Header from "./MainComponents/Header";
-import Footer from "./MainComponents/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 export default function Register() {
   return (
     <>
-      <Header />
       <Box
         component="form"
         width={"400px"}
@@ -112,7 +111,6 @@ export default function Register() {
           Register
         </Button>
       </Box>
-      <Footer />
     </>
   );
 }

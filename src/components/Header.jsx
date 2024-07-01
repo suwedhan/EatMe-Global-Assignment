@@ -4,66 +4,63 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import MoreIcon from "@mui/icons-material/MoreVert";
+
 import { Button, Stack } from "@mui/material";
-import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 
 import Logo from "./Logo";
-import Maincard from "./Maincard";
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
+const CustomAppBar = styled(AppBar)(({ theme }) => ({
+  height: "72px",
+  backgroundColor: "white",
+  boxShadow: "outlined",
+  padding: "0px 130px ",
+  whiteSpace: "nowrap",
+}));
+
+const Headerbuttons = styled(Button)(({}) => ({
+  color: "black", // Set text color to white
+  backgroundColor: "#fff", // Set background color to white
+  boxShadow: "none",
+  border: "#DCDCDC",
+  borderWidth: "0.5px",
+  borderStyle: "solid",
+  textTransform: "none",
+  fontWeight: 400,
+  fontSize: "16px",
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
-  marginRight: theme.spacing(2),
-  marginLeft: 0,
-  width: "100%",
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
+    // Adjust hover styles (optional)
+    backgroundColor: "#fff",
+    boxShadow: "0px 0px 0px 0.5px #B6B6B6",
+    border: "black",
   },
 }));
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
+const ButtonContainer = styled("div")(({}) => ({
   display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
+  justifyContent: "flex-end",
+  paddingLeft: "690px",
+  gap: "6px",
+  border: "none",
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-  color: "inherit",
-  "& .MuiInputBase-input": {
-    padding: theme.spacing(1.5, 1.5, 1.5, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "60ch",
-    },
+  "&:hover": {
+    border: "none",
+    boxShadow: "none",
+
+    // Adjust hover styles (optional)
   },
 }));
 
-export default function RegisterHeader() {
+export default function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -155,14 +152,21 @@ export default function RegisterHeader() {
         >
           <AccountCircle />
         </IconButton>
+
         <p>Profile</p>
       </MenuItem>
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    <Box sx={{ flexGrow: 1, display: "block" }}>
+      <CustomAppBar
+        sx={{
+          boxShadow: "1px 1px 1px #EAE7E7 ",
+          height: "72px",
+        }}
+        position="static"
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -173,48 +177,50 @@ export default function RegisterHeader() {
             <Logo />
           </IconButton>
 
-          <Search width="300px">
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              width="300px"
-              placeholder="Search Tossed -St Martin's Lane"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-
-          <Box sx={{ flexGrow: 1 }} />
           <Stack
             sx={{
               display: { xs: "none", md: "flex" },
               flexDirection: "row",
-              gap: 2,
+              gap: 1,
             }}
           >
-            <Button
-              variant="contained"
-              startIcon={<ShoppingBasketOutlinedIcon />}
-            >
-              Basket
-            </Button>
-            <Button variant="contained" startIcon={<OtherHousesOutlinedIcon />}>
-              Sign up or log in
-            </Button>
+            {/* header buttons  */}
+            <ButtonContainer>
+              <Headerbuttons
+                disableRipple
+                variant="contained"
+                startIcon={
+                  <OtherHousesOutlinedIcon sx={{ color: "#00ccbc" }} />
+                }
+              >
+                Sign up or log in
+              </Headerbuttons>
 
-            <Button
-              variant="contained"
-              startIcon={<PermIdentityOutlinedIcon />}
-            >
-              Profile
-            </Button>
+              <Headerbuttons
+                disableRipple
+                variant="contained"
+                startIcon={
+                  <PermIdentityOutlinedIcon sx={{ color: "#00ccbc" }} />
+                }
+              >
+                Account
+              </Headerbuttons>
+            </ButtonContainer>
           </Stack>
         </Toolbar>
-      </AppBar>
+      </CustomAppBar>
       {renderMobileMenu}
       {renderMenu}
 
-      <Maincard />
+      <Stack
+        sx={{
+          justifyContent: "center",
+          width: "400px",
+          alignContent: "center",
+          // alignItems: "center",
+          margin: "0 auto",
+        }}
+      ></Stack>
     </Box>
   );
 }

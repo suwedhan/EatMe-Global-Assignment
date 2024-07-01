@@ -8,10 +8,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
-import { Box, Container, Card, Typography } from "@mui/material";
-import Burgerimg from "./Burgerimg";
+import { Box, Container, Card, Typography, Grid, Stack } from "@mui/material";
+import Bowlimg from "./Bowlimg";
 
-export default function Categoryitem() {
+export default function Categoryitemhorizontal() {
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -30,114 +30,99 @@ export default function Categoryitem() {
       : text;
   };
 
-  const title = "Chicken Pasta";
-  const maxLength = 20; // Adjust this value as per your requirement
-  const truncatedTitle = truncateText(title, maxLength);
+  const Description =
+    " A tasty dish with a lot of cheese and pasta and mint and bla bla blablab fufb ";
+  const maxLength = 24; // Adjust this value as per your requirement
+  const truncatedTitle = truncateText(Description, maxLength);
 
   return (
-    <Container>
+    <Container sx={{}}>
       <Card
         variant="outlined"
         onClick={handleClickOpen}
         sx={{
-          //   borderWidth: "4px",
           position: "relative",
-          //   border: "1px solid black",
-          width: "123px",
-          height: "266px",
+          width: "100%",
+          height: "140px",
           boxSizing: "border-box",
           cursor: "pointer",
-          boxShadow: "20px",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          padding: "10px",
+          mb: "2vh",
           "&:hover": {
             border: "none",
             background: "white",
             boxShadow: "10px",
-            // borderColor: "2px solid black",
           },
         }}
       >
         <Box
-          direction="column"
           sx={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
+            flex: 1,
+            textAlign: "left",
+            overflow: "hidden",
           }}
         >
-          <Box>
-            <Burgerimg />
-          </Box>
-          <Box
+          <Typography
+            textTransform="none"
             sx={{
-              textAlign: "center",
-              padding: "0 5px",
+              color: "black",
+              fontWeight: "600",
+              fontSize: "15px",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
             }}
           >
-            <Box
-              sx={{
-                height: truncatedTitle.length < title.length ? "auto" : "5vh",
-                paddingBottom:
-                  truncatedTitle.length < title.length ? "10px" : "0",
-              }}
-            >
-              <Typography
-                textTransform="none"
-                textAlign="left"
-                sx={{
-                  color: "black",
-                  fontWeight: "600",
-                  fontSize: "15px",
-                  textOverflow: "ellipsis",
-                }}
-              >
-                {truncatedTitle}
-              </Typography>
-            </Box>
-
-            <Typography
-              textTransform="none"
-              textAlign="left"
-              sx={{
-                color: "black",
-                fontWeight: "400",
-                fontSize: "15px",
-              }}
-            >
-              300 kcal
-            </Typography>
-
-            <Typography
-              textTransform="none"
-              textAlign="left"
-              sx={{
-                color: "black",
-                fontWeight: "400",
-                fontSize: "15px",
-              }}
-            >
-              £20
-            </Typography>
-          </Box>
-          <Box
+            Chicken Burger
+          </Typography>
+          {/* Description of the item  */}
+          <Typography
+            textTransform="none"
             sx={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              paddingBottom: "10px",
+              color: "black",
+              fontWeight: "400",
+              fontSize: "15px",
             }}
           >
+            {Description}
+          </Typography>
+          {/* Price of the Item */}
+          <Typography
+            textTransform="none"
+            sx={{
+              color: "black",
+              fontWeight: "400",
+              fontSize: "15px",
+            }}
+          >
+            £20
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginLeft: "10px",
+          }}
+        >
+          <Stack direction="row" gap={2}>
+            <Bowlimg />
             <Button
               disableRipple
               sx={{
-                width: "107px",
-                height: "34px",
+                width: "10px ",
+                height: "100px",
                 background: "white",
                 border: "1px solid #00000014",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                minWidth: "40px",
                 "&:hover": {
                   borderColor: "#d1d4d4",
                   background: "white",
@@ -154,7 +139,7 @@ export default function Categoryitem() {
                 }}
               />
             </Button>
-          </Box>
+          </Stack>
         </Box>
       </Card>
 

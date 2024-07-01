@@ -10,8 +10,6 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 import { useNavigate } from "react-router-dom";
-import Header from "./MainComponents/Header";
-import Footer from "./MainComponents/Footer";
 
 export default function Registration() {
   const navigate = useNavigate();
@@ -39,7 +37,6 @@ export default function Registration() {
 
   return (
     <>
-      <Header />
       <Stack>
         <Box sx={{ width: "400px", margin: "0 auto", marginBottom: "60px" }}>
           <Stack direction="column" spacing={2} justifyContent="flex-end">
@@ -126,7 +123,7 @@ export default function Registration() {
               variant="contained"
               disableRipple
               disabled={!loginButtonactive}
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/auth/register")}
               sx={{
                 width: "100%",
                 height: "50px",
@@ -178,7 +175,6 @@ export default function Registration() {
           </Stack>
         </Box>
       </Stack>
-      <Footer />
     </>
   );
 }

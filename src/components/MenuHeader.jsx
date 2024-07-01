@@ -2,7 +2,7 @@ import * as React from "react";
 import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import WindowResize from "../../hooks/WindowResize";
+import WindowResize from "../hooks/WindowResize";
 
 import IconButton from "@mui/material/IconButton";
 import InputBase from "@mui/material/InputBase";
@@ -12,9 +12,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Button, Container, Stack } from "@mui/material";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import OtherHousesOutlinedIcon from "@mui/icons-material/OtherHousesOutlined";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Logo from "../Logo";
-import Searchicon from "../Searchicon";
+import Logo from "./Logo";
+import Searchicon from "./Searchicon";
 
 const CustomAppBar = styled(AppBar)(({ theme }) => ({
   height: "72px",

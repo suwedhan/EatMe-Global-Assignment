@@ -3,7 +3,7 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import WindowResize from "../../hooks/WindowResize";
+import WindowResize from "../hooks/WindowResize";
 import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
 import { Container, Stack } from "@mui/material";
 
@@ -14,7 +14,7 @@ const card = (
     <CardContent
       sx={{
         height: "480px",
-        margin: "10px",
+        margin: "20px",
         display: "flex",
         alignItems: "center",
       }}
@@ -45,12 +45,13 @@ const card = (
         sx={{
           cursor: "not-allowed",
           textTransform: "none",
-          width: "386px",
+          width: "400px",
           height: "48px",
           color: "#abadad",
           borderColor: "#abadad",
           border: "none",
           background: "#e2e5e5",
+          marginBottom: "10px",
 
           "&:hover": {
             color: "#abadad",
@@ -71,7 +72,10 @@ export default function Basketcard() {
     <Container
       sx={{ minWidth: 418, display: width < 960 ? "none" : "inherit" }}
     >
-      <Card variant="outlined" sx={{ width: "418px" }}>
+      <Card
+        variant="outlined"
+        sx={{ width: "420px", marginRight: "200px", marginTop: "200px" }}
+      >
         {card}
       </Card>
     </Container>

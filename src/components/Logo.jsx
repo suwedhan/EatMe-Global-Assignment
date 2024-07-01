@@ -1,4 +1,4 @@
-import Logod from "../Assets/Logod.svg"
+import Logod from "../assets/Logod.svg";
 
 export default function Logo() {
   return (

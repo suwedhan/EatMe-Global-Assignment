@@ -9,7 +9,7 @@ import { Typography, Stack, Divider } from "@mui/material";
 import { Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-export default function LabelButton() {
+export default function Authlogin() {
   const navigate = useNavigate();
   return (
     <Box sx={{ width: "400px", margin: "0 auto", marginBottom: "60px" }}>
