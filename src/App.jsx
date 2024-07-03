@@ -1,15 +1,24 @@
 import "./App.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+<<<<<<< Updated upstream
+
+import MenuHeader from "./components/MainComponents/MenuHeader";
+import Maincard from "./components/MainComponents/Maincard";
+import Basketcard from "./components/MainComponents/Basketcard";
+import Categoryitem from "./components/Categoryitem";
+=======
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landingpage from "./pages/Landingpage";
 import Menupage from "./pages/Menupage";
 import MenuHeader from "./components/MenuHeader";
 import Footer from "./components/Footer";
-import Authloginpage from "./pages/Authlandingpage";
-import Loginpage from "./pages/Authloginpage";
-import Authforgotpasspage from "./pages/Authforgotpasspage";
-import Authregisterpage from "./pages/Authregisterpage";
+import Authloginpage from "./features/Authlandingpage";
+import Loginpage from "./features/Authloginpage";
+import Authforgotpass from "./features/Authforgotpass";
+import Authregister from "./features/Authregister";
 import { Container } from "@mui/material";
+import Landingpagesearchcard from "./components/Landingpagesearchcard";
+>>>>>>> Stashed changes
 
 // Custom theme to change font globally
 const theme = createTheme({
@@ -29,8 +38,8 @@ function App() {
           <Route path="/auth" element={<Authloginpage />} />
           <Route path="/menu" element={<Menupage />} />
           <Route path="/auth/login" element={<Loginpage />} />
-          <Route path="/auth/register" element={<Authregisterpage />} />
-          <Route path="/auth/forgot" element={<Authforgotpasspage />} />
+          <Route path="/auth/register" element={<Authregister />} />
+          <Route path="/auth/forgot" element={<Authforgotpass />} />
         </Routes>
       </BrowserRouter>
       <Footer />

@@ -96,7 +96,14 @@ export default function MenuHeader() {
   console.log(width < 450);
 
   return (
-    <Container maxWidth="fixed">
+    <Container
+      maxWidth="fixed"
+      sx={{
+        position: "sticky",
+        top: 0,
+        zIndex: 1100,
+      }}
+    >
       <CustomAppBar
         sx={{
           boxShadow: "0px 1px 1px #EAE7E7 ",

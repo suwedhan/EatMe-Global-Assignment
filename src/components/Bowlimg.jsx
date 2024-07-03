@@ -1,4 +1,4 @@
-import foodBowl from "../assets/foodBowl.jpeg";
+import foodBowl from "../assets/images/foodBowl.jpeg";
 
 export default function Bowlimg() {
   return (

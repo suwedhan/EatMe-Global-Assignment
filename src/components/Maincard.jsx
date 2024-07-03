@@ -1,27 +1,38 @@
 import * as React from "react";
-import { Box, Card, Button, Typography, Stack, Grid } from "@mui/material";
+import {
+  Box,
+  Card,
+  Button,
+  Typography,
+  Stack,
+  Grid,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import Customdialog from "./Customdialog";
 import Ratingdialog from "./Ratingdialog";
 import Deliverdialog from "./Deliverdialog";
 import TossedImage from "./TossedImage";
-import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 export default function MainCard() {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   return (
     <Box>
-      <Button
-        startIcon={<ArrowBackIcon />}
-        variant="text"
-        sx={{
-          color: "black",
-          // position: "absolute",
-          top: "8px",
-          left: "8px",
-        }}
-      >
-        Back
-      </Button>
+      {!isMobile && (
+        <Button
+          startIcon={<ArrowBackIcon />}
+          variant="text"
+          sx={{
+            color: "#00ccbc",
+            top: "8px",
+            left: "8px",
+          }}
+        >
+          Back
+        </Button>
+      )}
       <Card variant="outlined" sx={{ marginTop: "16px", padding: "16px" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} sx={{ position: "relative" }}>
@@ -46,6 +57,7 @@ export default function MainCard() {
             <Stack direction="column" spacing={2}>
               <Customdialog />
               <Ratingdialog />
+              <Deliverdialog variant={2} />
             </Stack>
           </Grid>
 
@@ -59,31 +71,7 @@ export default function MainCard() {
               alignItems: "flex-end",
             }}
           >
-            <Deliverdialog />
-            <Button
-              disableRipple
-              variant="contained"
-              startIcon={<GroupOutlinedIcon sx={{ color: "#00ccbc" }} />}
-              sx={{
-                color: "black",
-                backgroundColor: "#fff",
-                boxShadow: "none",
-                border: "#DCDCDC",
-                borderWidth: "0.5px",
-                borderStyle: "solid",
-                textTransform: "none",
-                fontWeight: 400,
-                fontSize: "16px",
-                mt: 2,
-                "&:hover": {
-                  backgroundColor: "#fff",
-                  boxShadow: "0px 0px 0px 0.5px #B6B6B6",
-                  border: "black",
-                },
-              }}
-            >
-              Start group order
-            </Button>
+            <Deliverdialog variant={1} />
           </Grid>
         </Grid>
       </Card>
