@@ -1,4 +1,4 @@
-import appstore from "../assets/appstore.svg";
+import appstore from "../assets/svgs/appstore.svg";
 
 export default function Logo() {
   return (

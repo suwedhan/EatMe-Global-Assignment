@@ -1,12 +1,5 @@
 import "./App.css";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-<<<<<<< Updated upstream
-
-import MenuHeader from "./components/MainComponents/MenuHeader";
-import Maincard from "./components/MainComponents/Maincard";
-import Basketcard from "./components/MainComponents/Basketcard";
-import Categoryitem from "./components/Categoryitem";
-=======
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landingpage from "./pages/Landingpage";
 import Menupage from "./pages/Menupage";
@@ -18,7 +11,6 @@ import Authforgotpass from "./features/Authforgotpass";
 import Authregister from "./features/Authregister";
 import { Container } from "@mui/material";
 import Landingpagesearchcard from "./components/Landingpagesearchcard";
->>>>>>> Stashed changes
 
 // Custom theme to change font globally
 const theme = createTheme({
@@ -32,6 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <MenuHeader />
+
       <BrowserRouter>
         <Routes>
           <Route index element={<Landingpage />}></Route>
