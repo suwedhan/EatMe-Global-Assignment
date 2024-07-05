@@ -33,7 +33,7 @@ export default function CustomizedDialogs() {
   };
 
   return (
-    <React.Fragment>
+    <>
       <Button
         // variant="text"
         onClick={handleClickOpen}
@@ -57,11 +57,9 @@ export default function CustomizedDialogs() {
           },
         }}
       >
-        <Stack textAlign={"left"}>
-          <Stack textAlign={"left"}>
-            <div style={{ color: "#4d7c1b" }}>4.8 Excellent</div>
-            <div style={{ color: "#585c5c" }}>See all 500 reviews</div>
-          </Stack>
+        <Stack sx={{ marginTop: 0, paddingTop: 0 }} textAlign={"left"}>
+          <div style={{ color: "#4d7c1b" }}>4.8 Excellent</div>
+          <div style={{ color: "#585c5c" }}>See all 500 reviews</div>
         </Stack>
       </Button>
       <BootstrapDialog
@@ -107,6 +105,6 @@ export default function CustomizedDialogs() {
           </Button>
         </DialogActions>
       </BootstrapDialog>
-    </React.Fragment>
+    </>
   );
 }

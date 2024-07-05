@@ -1,4 +1,4 @@
-import playstore from "../assets/playstore.svg";
+import playstore from "../assets/svgs/playstore.svg";
 
 export default function Logo() {
   return (
