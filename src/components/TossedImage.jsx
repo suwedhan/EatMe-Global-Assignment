@@ -60,7 +60,7 @@ export default function TossedImage() {
       <img
         src={TossedImg}
         alt="burgerpic"
-        style={{ width: "100%", height: "auto" }}
+        style={{ width: "100%", height: "100%", objectFit: "fill" }}
       />
     </Box>
   );

@@ -18,22 +18,29 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 export default function MainCard() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
-    <Box>
+    <Box sx={{ boxShadow: "none", margin: 2 }}>
       {!isMobile && (
         <Button
+          disableRipple
           startIcon={<ArrowBackIcon />}
           variant="text"
           sx={{
             color: "#00ccbc",
-            top: "8px",
-            left: "8px",
+            // position: "absolute",
+            left: 20,
+            textTransform: "none",
+            fontSize: "16px",
+            "&:hover": {
+              bgcolor: "white",
+            },
           }}
         >
           Back
         </Button>
       )}
-      <Card variant="outlined" sx={{ marginTop: "16px", padding: "16px" }}>
+      <Card sx={{ boxShadow: "none", marginLeft: "2vh" }}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={4} sx={{ position: "relative" }}>
             <TossedImage />
@@ -45,13 +52,21 @@ export default function MainCard() {
             md={6}
             sx={{ display: "flex", flexDirection: "column" }}
           >
-            <Typography variant="h4" fontWeight="bold">
+            <Typography fontSize="40px" fontWeight="bold">
               Tossed - St Martin's Lane
             </Typography>
-            <Typography color="text.secondary" sx={{ mb: 1.5 }}>
+            <Typography
+              color="text.secondary"
+              fontWeight="500"
+              sx={{ mb: 1.5 }}
+            >
               10 - 20 min · Chicken · Salads · Healthy
             </Typography>
-            <Typography color="text.secondary" sx={{ mb: 1.5 }}>
+            <Typography
+              color="text.secondary"
+              fontWeight="500"
+              sx={{ mb: 1.5 }}
+            >
               0.20 miles away · Closes at 21:00 · £7.00 minimum · £0.49 delivery
             </Typography>
             <Stack direction="column" spacing={2}>

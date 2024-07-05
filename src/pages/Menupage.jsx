@@ -104,38 +104,52 @@ function Menupage() {
   ];
 
   return (
-    <Box sx={{ mx: 5 }}>
-      <Maincard />
-      <Scrollnav />
+    <>
+      <Box sx={{ mx: 5 }}>
+        <Maincard />
+      </Box>
 
-      <Grid
-        container
-        spacing={2}
-        rowSpacing={3}
-        direction="row"
-        justifyContent="space-between" // Spread out the components
-      >
-        <Grid item xs={12} md={8} lg={8}>
-          {/* Adjust the size for the remaining space */}
-          <Stack direction="column" spacing={2}>
-            <Scrollablemenucard />
-            <Categoryitemhorizontal />
-            <Categoryitemhorizontal />
-            <Categoryitemhorizontal />
-            <Categoryitemhorizontal />
-          </Stack>
-        </Grid>
+      <Scrollnav />
+      <Box sx={{ mx: 5 }}>
         <Grid
-          item
-          md={4}
-          lg={4}
-          xl={3}
-          sx={{ display: { xs: "none", md: "block" } }}
+          container
+          spacing={2}
+          rowSpacing={3}
+          direction="row"
+          justifyContent="space-between" // Spread out the components
         >
-          <Basketcard />
+          <Grid item xs={12} md={8} lg={8}>
+            {/* Adjust the size for the remaining space */}
+            <Stack direction="column" spacing={2}>
+              <Scrollablemenucard />
+
+              {categories.map((category, index) => (
+                <div
+                  id={category.href.substring(1)}
+                  style={{ padding: "20px 0" }}
+                >
+                  <CategoryList
+                    key={index}
+                    title={category.title}
+                    items={category.items}
+                    href={category.href}
+                  />
+                </div>
+              ))}
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            md={4}
+            lg={4}
+            xl={3}
+            sx={{ display: { xs: "none", md: "block" } }}
+          >
+            <Basketcard />
+          </Grid>
         </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </>
   );
 }
 
